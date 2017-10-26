@@ -9,20 +9,16 @@ MONGO_PORT = 27017
 #MONGO_USERNAME = '<your username>'
 #MONGO_PASSWORD = '<your password>'
 
-MONGO_DBNAME = 'courseDB'
+MONGO_DBNAME = 'event_db'
 
 
-# Enable reads (GET), inserts (POST) and DELETE for resources/collections
-# (if you omit this line, the API will default to ['GET'] and provide
-# read-only access to the endpoint).
-RESOURCE_METHODS = ['GET', 'POST', 'DELETE']
+RESOURCE_METHODS = ['GET', 'POST']
+ITEM_METHODS = ['GET', 'PATCH', 'DELETE']
 
+PUBLIC_METHODS = ['GET']
+PUBLIC_ITEM_METHODS = ['GET']
 
-# Enable reads (GET), edits (PATCH), replacements (PUT) and deletes of
-# individual items  (defaults to read-only item access).
-ITEM_METHODS = ['GET', 'PATCH', 'PUT', 'DELETE']
-
-course_schema = {
+event_schema = {
     # Schema definition, based on Cerberus grammar. Check the Cerberus project
     # (https://github.com/nicolaiarocci/cerberus) for details.
     'title': {
@@ -53,10 +49,10 @@ course_schema = {
 #    }
 }
 
-course = {
+event = {
     # 'title' tag used in item links. Defaults to the resource title minus
     # the final, plural 's' (works fine in most cases but not for 'people')
-    'item_title': 'course',
+    'item_title': 'event',
 
     # by default the standard item entry point is defined as
     # '/people/<ObjectId>'. We leave it untouched, and we also enable an
@@ -74,7 +70,11 @@ course = {
     # most global settings can be overridden at resource level
     'resource_methods': ['GET', 'POST'],
 
-    'schema': course_schema
+    'public_methods': ['GET'],
+    'public_item_methods': ['GET'],
+
+    'schema': event_schema
+
 }
 
-DOMAIN = {"course": course}
+DOMAIN = {"event": event}
