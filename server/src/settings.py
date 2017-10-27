@@ -18,6 +18,8 @@ ITEM_METHODS = ['GET', 'PATCH', 'DELETE']
 PUBLIC_METHODS = ['GET']
 PUBLIC_ITEM_METHODS = ['GET']
 
+X_DOMAINS = '*'
+
 event_schema = {
     # Schema definition, based on Cerberus grammar. Check the Cerberus project
     # (https://github.com/nicolaiarocci/cerberus) for details.
