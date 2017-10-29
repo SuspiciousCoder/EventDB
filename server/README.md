@@ -7,7 +7,7 @@ The server depends on the python Eve (http://python-eve.org/).
 pip install Eve
 
 
-And MongoDB. Defaults to a local instance.
+And MongoDB. Defaults to a local instance .
 
 
 ## Testing
