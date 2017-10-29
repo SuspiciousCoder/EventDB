@@ -27,7 +27,7 @@ function gotList (res, status) {
     console.log(res)
 
     res['_items'].forEach(function(element) {
-        event = {id: element['_id'], 
+        event = {id: element['_id'],
                  description: element['description'],
                  title: element['title']}
         events.list.push(event)
@@ -44,6 +44,3 @@ function getList () {
     $.ajax(events.server, {dataType: "json",
                                            success: gotList})
 }
-
-
-getList()
