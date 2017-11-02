@@ -1,47 +1,24 @@
-var event = {list: [],
-             db : {server: 'http://localhost:5000/event'}
-           }
+var ServerUrl = 'http://localhost:5000/event'
 
-function appendListItem(html) {
-    $("#event-list").append(html)
-}
 
-function HtmlPreview(event) {
-    event_id = "'" + event.id + "'"
-    html  = '<li id="' + event.id + '">'
-    html += '<a href="#" onclick="show_event(' + event_id + ')">' + event.title + '</a></li>'
-    return html
-}
-
-function show_event(id) {
-    event = event.list.find(function(i) {return i.id === id})
-
-    $('#event-title').text(event.title)
-    $('#event-description').text(event.description)
-}
-
-function syncList() {
-
-}
-
-function gotList (res, status) {
-    console.log(res)
+function parseList (res, status) {
+    var list = []
 
     res['_items'].forEach(function(element) {
         event = {id: element['_id'],
                  description: element['description'],
                  title: element['title']}
-        event.list.push(event)
-
-        appendListItem(HtmlPreview(event))
+       list.push(event)
     }, this);
 
-    syncList()
-
-    console.log(event.list)
+    return list
 }
 
-function getList () {
-    $.ajax(event.server, {dataType: "json",
-                                           success: gotList})
+function getList (callback) {
+    $.ajax(ServerUrl, { dataType: "json",
+                        success: function (res, status) {
+                                    list = parseList(res, status)
+                                    callback(list)
+                                  }
+    })
 }

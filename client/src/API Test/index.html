@@ -34,5 +34,22 @@
 
         <script src='jquery-3.2.1.js'></script>
         <script src='EventDB.js'></script>
+
+        <script>
+            function HtmlPreview(event) {
+                event_id = "'" + event.id + "'"
+                html  = '<li id="' + event.id + '">'
+                html += '<a href="#">' + event.title + '</a></li>'
+                return html
+            }
+
+            function PreviewList(list) {
+                list.forEach(function(element) {
+                    $("#event-list").append(HtmlPreview(element))
+                }, this);
+            }
+
+            getList(PreviewList)
+        </script>
     </body>
 </html>
