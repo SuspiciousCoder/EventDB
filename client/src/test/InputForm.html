@@ -16,7 +16,7 @@
   </head>
   <body>
 
-    <form>
+    <form id="form">
       <div class="form-group">
         <label>Titel 1</label>
         <input class="form-control" id="title-1">
@@ -41,7 +41,22 @@
     </form>
 
     <script src="EventDB.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+    <script src="jquery-3.2.1.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+
+    <script>
+      $("#form").submit(function(e) {
+        event = {
+          title1 : $("#title-1").val(),
+          title2 : $("#title-2").val(),
+          time : $("#time").val(),
+          description : $("#description").val()
+        }
+
+        putEvent(JSON.stringify(event))
+
+        e.preventDefault()
+      })
+    </script>
   </body>
 </html>

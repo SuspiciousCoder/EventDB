@@ -22,3 +22,17 @@ function getList (callback) {
                                   }
     })
 }
+
+function success() {
+    alert ("success")
+}
+
+function putEvent(data) {
+    $.ajax(ServerUrl, {
+        type: "POST",
+        data: data,
+        dataType : "json",
+        success : success,
+        headers : {'Authorization': 'Basic Zm9vOmJhcg=='}
+    })
+}

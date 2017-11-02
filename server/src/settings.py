@@ -16,16 +16,18 @@ PUBLIC_METHODS = ['GET']
 PUBLIC_ITEM_METHODS = ['GET']
 
 X_DOMAINS = '*'
+X_HEADERS = ['autorization', 'content-type']
+X_EXPOSE_HEADERS = ['autorization', 'content-type']
 
 event_schema = {
     # Schema definition, based on Cerberus grammar. Check the Cerberus project
     # (https://github.com/nicolaiarocci/cerberus) for details.
-    'title-1': {
+    'title1': {
         'type': 'string',
         'required': True
     },
 
-    'title-2': {
+    'title2': {
         'type': 'string',
         'required': True
     },
