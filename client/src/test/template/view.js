@@ -16,7 +16,8 @@ function PreviewList(list) {
 function HtmlViewer(id) {
     //dyn-ui
     globalStorage['current-id'] = id
-    loadForm('view')
+    loadForm('read')
 }
 
 getList(PreviewList)
+if (globalStorage['current-id'] != undefined) delete globalStorage['current-id']

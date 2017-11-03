@@ -26,7 +26,7 @@ function getList (callback) {
 }
 
 
-function putEvent(data) {
+function putEvent(data, callback) {
     $.ajax(ServerUrl, {
         type: "post",
         data: data,

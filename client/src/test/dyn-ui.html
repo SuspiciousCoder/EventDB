@@ -12,7 +12,6 @@
             <table>
                 <tr>
                     <td><a href="#" class='navigator' id='view'>Viewer</a></td>
-                    <td><a href="#" class='navigator' id='read'>Reader</a></td>
                     <td><a href="#" class='navigator' id='edit'>Editor</a></td>
                 </tr>
             </table>
@@ -31,7 +30,7 @@
         <!-- Interface Logic -->
         <script>
             var globalStorage = {}
-            var defaultForm = 'viewer'
+            var defaultForm = 'view'
 
             function loadForm(name) {
                 $("#content").load('template/' + name + '.html')
