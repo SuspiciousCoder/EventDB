@@ -7,7 +7,9 @@ function parseList (res, status) {
     res['_items'].forEach(function(element) {
         event = {id: element['_id'],
                  description: element['description'],
-                 title: element['title']}
+                 time: element['time'],
+                 title1: element['title1'],
+                 title2: element['title2']}
        list.push(event)
     }, this);
 
@@ -23,16 +25,12 @@ function getList (callback) {
     })
 }
 
-function success() {
-    alert ("success")
-}
 
 function putEvent(data) {
     $.ajax(ServerUrl, {
-        type: "POST",
+        type: "post",
         data: data,
-        dataType : "json",
-        success : success,
+        contentType : "application/json",
         headers : {'Authorization': 'Basic Zm9vOmJhcg=='}
     })
 }

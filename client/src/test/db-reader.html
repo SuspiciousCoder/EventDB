@@ -1,7 +1,7 @@
 <html>
     <head>
         <title>
-            EventDB UI
+            EventDB Reader
         </title>
         <link href="nice-list.css" rel="stylesheet">
     </head>
@@ -11,36 +11,27 @@
             <ul id='event-list'></ul>
         </div>
 
-        <div id='event-monitor' style="visibility: hidden">
-            <h2 id='event-title'></h2>
-
-            <hr>
-            
-            <p id='event-description'>
-
-            </p>
-        </div>
-
-        <div id='event-editor' style="visibility: hidden">
-            tst
-        </div>
-
 
         <script src='jquery-3.2.1.js'></script>
         <script src='EventDB.js'></script>
 
         <script>
+            var storage;
+
             function HtmlPreview(event) {
-                event_id = "'" + event.id + "'"
-                html  = '<li id="' + event.id + '">'
-                html += '<a href="#">' + event.title + '</a></li>'
+                html  = '<li>'
+                html += '<a href="#" onclick=HtmlViewer("' + event.id  + '")>' + event.title1 + '</a></li>'
                 return html
             }
+
+            
 
             function PreviewList(list) {
                 list.forEach(function(element) {
                     $("#event-list").append(HtmlPreview(element))
                 }, this);
+
+                storage = list
             }
 
             getList(PreviewList)

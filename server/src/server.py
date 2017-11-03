@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 from eve import Eve
 from eve.auth import BasicAuth
 

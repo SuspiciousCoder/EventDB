@@ -16,8 +16,8 @@ PUBLIC_METHODS = ['GET']
 PUBLIC_ITEM_METHODS = ['GET']
 
 X_DOMAINS = '*'
-X_HEADERS = ['autorization', 'content-type']
-X_EXPOSE_HEADERS = ['autorization', 'content-type']
+X_HEADERS = ['authorization', 'content-type']
+# X_EXPOSE_HEADERS = ['authorization', 'content-type']
 
 event_schema = {
     # Schema definition, based on Cerberus grammar. Check the Cerberus project
