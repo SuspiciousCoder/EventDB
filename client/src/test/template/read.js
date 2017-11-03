@@ -1,0 +1,1 @@
+alert(globalStorage['current-id'])

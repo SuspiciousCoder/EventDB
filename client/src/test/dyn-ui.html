@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <title>EventDB UI</title>
+
+        <link rel='stylesheet' href='css/bootstrap.css'>
+        <link rel='stylesheet' href='css/nice-list.css'>
+    </head>
+
+    <body>
+
+        <div id='navbar'>
+            <table>
+                <tr>
+                    <td><a href="#" class='navigator' id='view'>Viewer</a></td>
+                    <td><a href="#" class='navigator' id='read'>Reader</a></td>
+                    <td><a href="#" class='navigator' id='edit'>Editor</a></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id='content'>
+
+        </div>
+
+
+
+        <script src='js/jquery-3.2.1.js'></script>
+        <script src='js/bootstrap.js'></script>
+        <script src='js/EventDB.js'></script>
+
+        <!-- Interface Logic -->
+        <script>
+            var globalStorage = {}
+            var defaultForm = 'viewer'
+
+            function loadForm(name) {
+                $("#content").load('template/' + name + '.html')
+                $.getScript('template/' + name + '.js')
+            }
+
+            $('.navigator').click(function(e) {
+                loadForm(e.target.id)
+            })
+
+            loadForm(defaultForm)
+
+        </script>
+    </body>
+</html>

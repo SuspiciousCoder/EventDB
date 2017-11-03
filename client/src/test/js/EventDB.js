@@ -2,7 +2,7 @@ var ServerUrl = 'http://localhost:5000/event'
 
 
 function parseList (res, status) {
-    var list = []
+    var list = {}
 
     res['_items'].forEach(function(element) {
         event = {id: element['_id'],
@@ -10,7 +10,7 @@ function parseList (res, status) {
                  time: element['time'],
                  title1: element['title1'],
                  title2: element['title2']}
-       list.push(event)
+       list[event.id] = event
     }, this);
 
     return list
