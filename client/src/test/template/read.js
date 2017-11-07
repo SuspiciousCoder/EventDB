@@ -1,5 +1,5 @@
 function readEvent(id) {
-    
+
     e = globalStorage['event-list'][id]
     console.log(e)
     $("#title1").text(e.title1)
@@ -9,3 +9,9 @@ function readEvent(id) {
 }
 
 readEvent(globalStorage['current-id'])
+
+console.log($('.delete'))
+$('.delete').click(function(){
+  deleteEvent(globalStorage['event-list'][id])
+  navigate('home')
+})

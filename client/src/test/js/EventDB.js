@@ -1,4 +1,4 @@
-var ServerUrl = 'http://localhost:5000/event'
+var ServerUrl = 'http://localhost:5000/event/'
 
 
 function parseList (res, status) {
@@ -10,6 +10,7 @@ function parseList (res, status) {
                  time: element['time'],
                  title1: element['title1'],
                  title2: element['title2']}
+       event['etag'] = element['_etag']
        list[event.id] = event
     }, this);
 
@@ -25,12 +26,45 @@ function getList (callback) {
     })
 }
 
+//create new item
+function putEvent(e) {
+  json = JSON.stringify(e)
+  $.ajax(ServerUrl, {
+      type: "post",
+      data: json,
+      async: false,
+      contentType : "application/json",
+      headers : {'Authorization': 'Basic Zm9vOmJhcg=='}
+  })
+}
 
-function putEvent(data, callback) {
-    $.ajax(ServerUrl, {
-        type: "post",
-        data: data,
-        contentType : "application/json",
-        headers : {'Authorization': 'Basic Zm9vOmJhcg=='}
-    })
+//apply changes to an specific item
+function updateEvent(e) {
+  EventUrl = ServerUrl + globalStorage['current-id'];
+  etag = e.etag;
+  delete e.etag;
+  json = JSON.stringify(e)
+
+  $.ajax(EventUrl, {
+      type: "patch",
+      data: json,
+      async: false,
+      contentType : "application/json",
+      headers : {'Authorization': 'Basic Zm9vOmJhcg==',
+                 'If-Match' : etag}
+  })
+}
+
+//apply changes to an specific item
+function deleteEvent(e) {
+  EventUrl = ServerUrl + globalStorage['current-id'];
+  etag = e.etag;
+  delete e.etag;
+
+  $.ajax(EventUrl, {
+      type: "delete",
+      async: false,
+      headers : {'Authorization': 'Basic Zm9vOmJhcg==',
+                 'If-Match' : etag}
+  })
 }

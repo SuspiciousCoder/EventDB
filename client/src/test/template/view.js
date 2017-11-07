@@ -4,8 +4,9 @@ function HtmlPreview(event) {
     return html
 }
 
-
+//TODO: delete old events when re-Load
 function PreviewList(list) {
+  $('#event-list').empty()
     for (i in list) {
         $("#event-list").append(HtmlPreview(list[i]))
     }
@@ -16,7 +17,7 @@ function PreviewList(list) {
 function HtmlViewer(id) {
     //dyn-ui
     globalStorage['current-id'] = id
-    loadForm('read')
+    navigate('read')
 }
 
 getList(PreviewList)

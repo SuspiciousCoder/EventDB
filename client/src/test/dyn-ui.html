@@ -11,8 +11,7 @@
         <div id='navbar'>
             <table>
                 <tr>
-                    <td><a href="#" class='navigator' id='view'>Viewer</a></td>
-                    <td><a href="#" class='navigator' id='edit'>Editor</a></td>
+                    <td><a href="#" class='navigator' id='home'>Home</a></td>
                 </tr>
             </table>
         </div>
@@ -30,18 +29,25 @@
         <!-- Interface Logic -->
         <script>
             var globalStorage = {}
-            var defaultForm = 'view'
+            var home = 'view'
 
-            function loadForm(name) {
-                $("#content").load('template/' + name + '.html')
+            function navigate(name) {
+              if (name == 'home')
+                name = home
+
+              $("#content").load('template/' + name + '.html', function(){
+                //navigatoin magic
+                $('.navigator').click(function(e) {
+                    navigate(e.target.id)
+                })
+
                 $.getScript('template/' + name + '.js')
+              })
+
+
             }
 
-            $('.navigator').click(function(e) {
-                loadForm(e.target.id)
-            })
-
-            loadForm(defaultForm)
+            navigate('home')
 
         </script>
     </body>
