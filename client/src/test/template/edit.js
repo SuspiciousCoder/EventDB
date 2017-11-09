@@ -13,6 +13,7 @@ $("#submit").click(function(e) {
       item['etag'] = globalStorage['event-list'][id]['etag']
       updateEvent(item)
     }
+    navigate('home')
 })
 
 function initEditor() {

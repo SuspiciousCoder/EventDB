@@ -10,8 +10,8 @@ function readEvent(id) {
 
 readEvent(globalStorage['current-id'])
 
-console.log($('.delete'))
-$('.delete').click(function(){
+$('#delete').click(function(){
+  id = globalStorage['current-id']
   deleteEvent(globalStorage['event-list'][id])
   navigate('home')
 })

@@ -42,8 +42,7 @@ event_schema = {
 
 event = {
     'item_title': 'event',
-    'cache_control': 'max-age=10,must-revalidate',
-    'cache_expires': 10,
+    'cache_control': 'no-cache',
     'schema': event_schema
 }
 
