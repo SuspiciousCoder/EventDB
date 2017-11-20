@@ -29,7 +29,7 @@
         <!-- Interface Logic -->
         <script>
             var globalStorage = {}
-            var home = 'view'
+            var home = 'login'
 
             function navigate(name) {
               if (name == 'home')
@@ -45,6 +45,13 @@
               })
 
 
+            }
+
+            function requireAuthorization() {
+                if (authorize(globalStorage['token']) == false) {
+                    home = 'login'
+                    navigate('home')
+                }
             }
 
             navigate('home')

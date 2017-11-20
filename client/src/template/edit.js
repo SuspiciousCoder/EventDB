@@ -1,3 +1,5 @@
+requireAuthorization()
+
 $("#submit").click(function(e) {
     item = {
       title1 : $("#title1").val(),

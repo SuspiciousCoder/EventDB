@@ -1,5 +1,19 @@
 var ServerUrl = 'http://localhost:5000/event/'
 
+function authorize(token) {
+  var ret = $.ajax(ServerUrl, {
+      type: "post",
+      async: false,
+      headers : {'Authorization': 'Basic ' + token}
+  })
+
+  console.log(ret)
+
+  if (ret.status == 401) {
+    return false
+  }
+  return true
+}
 
 function parseList (res, status) {
     var list = {}

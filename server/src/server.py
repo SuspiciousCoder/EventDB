@@ -7,7 +7,7 @@ from eve.auth import BasicAuth
 class HardCodedAuth(BasicAuth):
     def check_auth(self, username, password, allowed_roles, resource,
                    method):
-        return username == 'foo' and password == 'bar'
+        return username == 'foo' and password == 'bar2'
 
 
 app = Eve(auth=HardCodedAuth)
